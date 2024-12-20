@@ -38,7 +38,7 @@ namespace PatExam
 			dept.DeptHead.Name = txtDeptName.Text;
 
             DefaultController defaultController = new DefaultController();
-            defaultController.);
+            defaultController.Dept(dept);
 
         }
 
@@ -56,13 +56,13 @@ namespace PatExam
             team.TeamLead = teamLead;
 			team.NumEmployees = Convert.ToInt32(txtNumEmployees.Text);
 
-            //((List<Team>)Cache["Team"]).Add(team);
+			((List<Team>)Cache["Team"]).Add(team);
 
-            //ddlTeam.DataSource = (List<Team>)Cache["Team"];
-            //ddlTeam.DataTextField = "Name";
-            //ddlTeam.DataValueField = "Name";
-            //ddlTeam.DataBind();
-        }
+			ddlTeam.DataSource = (List<Team>)Cache["Team"];
+			ddlTeam.DataTextField = "Name";
+			ddlTeam.DataValueField = "Name";
+			ddlTeam.DataBind();
+		}
 			
 			
         protected void btnAddMember_Click(object sender, EventArgs e)

@@ -20,20 +20,20 @@
                     <asp:Label ID="Labell" Text="DepartmentHead" runat="server" />
                     <asp:TextBox runat="server" ID="txtDeptHead" />
                     <br>
-                    <asp:Button ID="Button2" Text="Add Dept" runat="server" OnClick="btnAddDept_Click" />
+                    <asp:Button ID="Buttono" Text="Add Dept" runat="server" OnClick="btnAddDept_Click" />
                 </ContentTemplate>
             </asp:UpdatePanel>
 
 
-<%--            <asp:UpdatePanel runat="server" ID="updTeam" UpdateMode="Conditional" ChildrenAsTriggers="true">
+            <asp:UpdatePanel runat="server" ID="updTeam" UpdateMode="Conditional" ChildrenAsTriggers="true">
                 <ContentTemplate>
                     <asp:DropDownList runat="server" ID="ddlTeam"></asp:DropDownList>
                     <asp:Label ID="lblTeamName" Text="TeamName" runat="server" />
                     <asp:TextBox runat="server" ID="txtTeamName" />
                     <asp:Label ID="lblTeamLead" Text="Name of Team Lead" runat="server" />
                     <asp:TextBox runat="server" ID="txtTeamLead" />
-                    <asp:Label ID="Label1" Text="Number of Members" runat="server" />
-                    <asp:TextBox runat="server" ID="txtNumEmployees" />
+                    <asp:Label ID="Label1" Text="Department Name" runat="server" />
+                    <asp:TextBox runat="server" ID="txtDeptNameTeam" />
                     <asp:Button ID="btnAddTeam" Text="Add Team" runat="server" OnClick="btnAddTeam_Click" />
                 </ContentTemplate>
             </asp:UpdatePanel>
@@ -43,11 +43,9 @@
                    <br>
                     <asp:Label ID="Label4" Text="Employee Name" runat="server" />
                     <asp:TextBox runat="server" ID="txtName" />
-                     <asp:Label ID="Label3" Text="Add Member" runat="server" />
-                    <asp:TextBox runat="server" ID="txtAddress" />
                     <asp:Button ID="Button1" Text="Add Member" runat="server" OnClick="btnAddMember_Click" />
                 </ContentTemplate>
-            </asp:UpdatePanel>--%>
+            </asp:UpdatePanel>
         </div>
     </main>
 

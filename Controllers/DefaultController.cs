@@ -78,7 +78,7 @@ namespace PatExam.Controllers
             string query = $"insert into Department (Name, Head) values ('{dept.Name}','{dept.DeptHead})";
             string query2 = $"insert into Employee (Name, Address) values ('{dept.Name}','Manila')";
 
-
+            //insert
             using (SqlConnection con = new SqlConnection(constring))
             {
                 con.Open();
@@ -87,6 +87,7 @@ namespace PatExam.Controllers
                 cmd.ExecuteNonQuery();
 
             }
+            //--------------
         }
     }
 }
