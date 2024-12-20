@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PatExam {
+namespace SimpleCRUD {
     
     
     public partial class ViewSwitcher {

@@ -1,84 +1,72 @@
-﻿using Microsoft.Ajax.Utilities;
-using PatExam.Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace PatExam
+using SimpleCRUD.Controllers;
+
+namespace SimpleCRUD
 {
-	public partial class _Default : Page
-	{
-		
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			if (!IsPostBack)
-			{
-				//if (Cache["Team"] == null)
-				//{
-					
-				//	Cache["Team"] = new List<Team>();
-				//}
-
-				//ddlTeam.DataSource = (List<Team>)Cache["Team"];
-				//ddlTeam.DataTextField = "Name";
-				//ddlTeam.DataValueField = "Name";
-				//ddlTeam.DataBind();
-            }
-		}
-
-        protected void btnAddDept_Click(object sender, EventArgs e)
-		{
-			Department dept = new Department();
-			dept.Name = txtDeptName.Text;
-			dept.DeptHead = new Employee();
-			dept.DeptHead.Name = txtDeptName.Text;
-
-            DefaultController defaultController = new DefaultController();
-            defaultController.Dept(dept);
-
-        }
-
-        protected void btnAddTeam_Click(object sender, EventArgs e)
+    public partial class _Default : Page
+    {
+        StringBuilder table = new StringBuilder();
+        protected void Page_Load(object sender, EventArgs e)
         {
+            
+           
 
+            if (!Page.IsPostBack)
+            {
+                display();
 
-			Team team = new Team();
-			Employee teamLead = new Employee();
-			
-			team.Name = txtTeamName.Text;
-
-            teamLead.Name = txtTeamLead.Text;
-
-            team.TeamLead = teamLead;
-			team.NumEmployees = Convert.ToInt32(txtNumEmployees.Text);
-
-			((List<Team>)Cache["Team"]).Add(team);
-
-			ddlTeam.DataSource = (List<Team>)Cache["Team"];
-			ddlTeam.DataTextField = "Name";
-			ddlTeam.DataValueField = "Name";
-			ddlTeam.DataBind();
-		}
-			
-			
-        protected void btnAddMember_Click(object sender, EventArgs e)
-		{
-            //TextBox3.Text
-            Employee emp = new Employee();
-			emp.Name = txtName.Text;
-			emp.Address = txtAddress.Text;
-            DefaultController defaultController = new DefaultController();
-			defaultController.Basic(emp);
-
-			//if (((List<Team>)Cache["Team"])[ddlTeam.SelectedIndex].Employees == null)
-			//	((List<Team>)Cache["Team"])[ddlTeam.SelectedIndex].Employees = new List<Employee>();
-			//Employee emp = new Employee();
-			//emp.Name = TextBox3.Text;
-   //         ((List<Team>)Cache["Team"])[ddlTeam.SelectedIndex].Employees.Add(emp);
+            }
         }
-	}
+        protected void btnAddPerson_Click(object sender, EventArgs e)
+        {
+            Model person = new Model();
+            person.Name = txtName.Text;
+            person.Age = Convert.ToInt32(txtAge.Text);
+
+            DefaultController defaultController = new DefaultController();
+            defaultController.PersonTable(person);
+            display();
+            UpdatePanel2.Update();
+                  
+        }
+        public void display()
+        {
+            //string constring = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            //SqlConnection con = new SqlConnection(constring);
+            //con.ConnectionString = ConfigurationManager.ConnectionStrings["Test"].ToString();
+            //con.Open();
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.CommandText = "select * from Person";
+            //cmd.Connection = con;
+            //SqlDataReader rd = cmd.ExecuteReader();
+            //table.Append("<table border='1'>");
+            //table.Append("<tr><th>Name</th><th>Age</th>");
+            //table.Append("</tr>");
+
+            //if (rd.HasRows)
+            //{
+            //    while (rd.Read())
+            //    {
+            //        table.Append("<tr>");
+            //        table.Append("<td>" + rd[0] + "<td>");
+            //        table.Append("<td>" + rd[1] + "<td>");
+            //        table.Append("<tr>");
+            //    }
+            //}
+            //table.Append("</table>");
+            //PlaceHolder1.Controls.Add(new Literal { Text = table.ToString() });
+            //rd.Close();
+        }
+
+    }
 }

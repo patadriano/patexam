@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="PatExam.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SimpleCRUD.Global" Language="C#" %>

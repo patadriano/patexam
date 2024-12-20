@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PatExam._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleCRUD._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -13,39 +13,42 @@
             <asp:UpdatePanel runat="server" ID="UpdatePanel2"  UpdateMode="Conditional" ChildrenAsTriggers="true" >
                 <ContentTemplate>
                     <br>
-                    <asp:DropDownList runat="server" ID="DropDownList1"></asp:DropDownList>
-                    <asp:Label ID="Label2" Text="DepartmentName" runat="server" />
-                    <asp:TextBox runat="server" ID="txtDeptName" />
-                     <br>
-                    <asp:Label ID="Labell" Text="DepartmentHead" runat="server" />
-                    <asp:TextBox runat="server" ID="txtDeptHead" />
-                    <br>
-                    <asp:Button ID="Buttono" Text="Add Dept" runat="server" OnClick="btnAddDept_Click" />
-                </ContentTemplate>
-            </asp:UpdatePanel>
-
-
-            <asp:UpdatePanel runat="server" ID="updTeam" UpdateMode="Conditional" ChildrenAsTriggers="true">
-                <ContentTemplate>
-                    <asp:DropDownList runat="server" ID="ddlTeam"></asp:DropDownList>
-                    <asp:Label ID="lblTeamName" Text="TeamName" runat="server" />
-                    <asp:TextBox runat="server" ID="txtTeamName" />
-                    <asp:Label ID="lblTeamLead" Text="Name of Team Lead" runat="server" />
-                    <asp:TextBox runat="server" ID="txtTeamLead" />
-                    <asp:Label ID="Label1" Text="Department Name" runat="server" />
-                    <asp:TextBox runat="server" ID="txtDeptNameTeam" />
-                    <asp:Button ID="btnAddTeam" Text="Add Team" runat="server" OnClick="btnAddTeam_Click" />
-                </ContentTemplate>
-            </asp:UpdatePanel>
-            
-            <asp:UpdatePanel runat="server" ID="UpdatePanel1"  UpdateMode="Conditional" ChildrenAsTriggers="true" >
-                <ContentTemplate>
-                   <br>
-                    <asp:Label ID="Label4" Text="Employee Name" runat="server" />
+                    <asp:Label ID="Name" Text="Name" runat="server" />
                     <asp:TextBox runat="server" ID="txtName" />
-                    <asp:Button ID="Button1" Text="Add Member" runat="server" OnClick="btnAddMember_Click" />
+                     <br>
+                    <asp:Label ID="Age" Text="Age" runat="server" />
+                    <asp:TextBox runat="server" ID="txtAge" />
+                    <br>
+                    <asp:Button ID="AddPerson" Text="Add" runat="server" OnClick="btnAddPerson_Click" />
+                    <%--<asp:Button ID="EditPerson" Text="Edit" runat="server" OnClick="btnEditPerson_Click" />
+                    <asp:Button ID="DeletePerson" Text="Delete" runat="server" OnClick="btnDeletePerson_Click" />--%>
                 </ContentTemplate>
             </asp:UpdatePanel>
+            <asp:UpdatePanel runat="server" ID="UpdatePanel1"  UpdateMode="Conditional" ChildrenAsTriggers="true" >
+                 <ContentTemplate>
+           <%--  <asp:Placeholder ID="PlaceHolder1" runat="server">
+
+             </asp:Placeholder>--%>
+                     <asp:GridView ID="GridView1" runat="server"
+                        AutoGenerateColumns="False" DataKeyNames="ID"
+                        CssClass="table" Width="45%" ShowHeaderWhenEmpty="true">
+                        <Columns>
+                            <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
+<asp:BoundField DataField="LastName" HeaderText="LastName" />
+                            <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
+                            <asp:BoundField DataField="LastName" HeaderText="LastName" />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="cmdEdit" runat="server" Text="Edit"
+                                        CssClass="btn myshadow"
+                                        OnClick="cmdEdit_Click"/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                 </ContentTemplate>
+                </asp:UpdatePanel>
+            
         </div>
     </main>
 

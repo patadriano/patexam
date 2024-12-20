@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 
-namespace PatExam.Controllers
+
+
+namespace SimpleCRUD.Controllers
 {
     public class DefaultController
     {
-        public void Basic(Employee emp)
-        {
+        public void PersonTable(Model person) {
             try
             {
-
-
                 string constring = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
-                // string query = "SELECT * FROM Employee ";
-                string query = $"insert into Employee (Name, Address) values ('{emp.Name}','{emp.Address}')";
-
+                string query = $"insert into Person (Name, Age) values (@Name, @Age)";
 
                 using (SqlConnection con = new SqlConnection(constring))
                 {
@@ -29,21 +26,18 @@ namespace PatExam.Controllers
                     cmd.CommandText = query;
                     cmd.CommandType = System.Data.CommandType.Text;
 
-                    //cmd.ExecuteNonQuery(); for insert
-
+                    cmd.Parameters.AddWithValue("@Name", person.Name);
+                    cmd.Parameters.AddWithValue("@Age", person.Age);
 
                     cmd.ExecuteNonQuery();
-
-
-
 
                     //using (SqlDataReader reader = cmd.ExecuteReader())
                     //{
                     //    while (reader.Read())
                     //    {
-                    //        Employee temp = new Employee();
+                    //        Model temp = new Model();
                     //        temp.Name = reader["Name"].ToString();
-                    //        temp.Address = reader["Address"].ToString();
+                    //        temp.Age = (int)reader["Age"];
 
                     //        ldata.Add(temp);
                     //    }
@@ -53,41 +47,7 @@ namespace PatExam.Controllers
             catch (Exception ex)
             {
             }
-        }
 
-        public void Team(Team team)
-        {
-
-            string constring = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
-            string query = $"insert into Team (Name, Leader, DeptID) values ('{team.Name}','{team.TeamLead}',1)";
-
-
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.ExecuteNonQuery();
-
-            }
-        }
-        public void Dept(Department dept)
-        {
-
-            string constring = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
-            string query = $"insert into Department (Name, Head) values ('{dept.Name}','{dept.DeptHead})";
-            string query2 = $"insert into Employee (Name, Address) values ('{dept.Name}','Manila')";
-
-            //insert
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.ExecuteNonQuery();
-
-            }
-            //--------------
         }
     }
 }

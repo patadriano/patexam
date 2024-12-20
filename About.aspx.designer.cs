@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PatExam
+namespace SimpleCRUD
 {
 
 
-	public partial class About
-	{
-	}
+    public partial class About
+    {
+    }
 }
